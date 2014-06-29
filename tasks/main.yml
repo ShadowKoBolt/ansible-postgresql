@@ -6,9 +6,9 @@
   - name: workaround to install postgresql with locale set
     shell: LANG={{ postgresql_locale  }} LC_COLLATE={{ postgresql_locale }} LC_CTYPE={{ postgresql_locale }} LC_MESSAGES={{ postgresql_locale }} LC_MONETARY={{ postgresql_locale }} LC_NUMERIC={{ postgresql_locale }} LC_TIME={{ postgresql_locale }} LC_ALL={{ postgresql_locale }}  apt-get install -y {{ item }}
     with_items: 
-      - postgresql-9.1
-      - postgresql-client-9.1
-      - postgresql-contrib-9.1
+      - postgresql-{{postgres_version}}
+      - postgresql-client-{{postgres_version}}
+      - postgresql-contrib-{{postgres_version}}
 
   - name: install postgresql packages
     apt: name={{item}} state=latest update_cache=yes
